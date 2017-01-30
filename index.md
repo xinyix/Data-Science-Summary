@@ -1,11 +1,12 @@
-## Welcome to GitHub Pages
+## Exploratory Data Analysis in R
 
 You can use the [editor on GitHub](https://github.com/xinyix/Data-Science-Summary/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Manage Dataframes
 
+### Markdown
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
