@@ -7,8 +7,9 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### Manage Data Frames
 Data frames in R are used to store data tables. A data frame is a list of vectors of the same length, each vector can have a different type, i.e. integer, factor, character, etc. We illustrate how to read, manipulate and store data frames using R's built-in dataset 'mtcars'.
 
- Print the dataset
-```markdown 
+Print our dataset:
+```
+
 > mtcars
                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -21,6 +22,10 @@ Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
 .
 .
 
+```
+See the dimension of our dataset:
+```
+> dim(mtcars)
 ```
 
 Syntax highlighted code block
