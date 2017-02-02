@@ -1,15 +1,13 @@
-## Exploratory Data Analysis in R
-
-### Manage Data Frames
+## Manage Data Frames
 Data frames in R are used to store data tables. A data frame is a list of vectors of the same length, each vector can have a different type, i.e. integer, factor, character, etc. We use R package 'dplyr' and built-in dataset 'mtcars' to illustrate how to read, manipulate and store data frames.
 
-Import libraries:
+### Import libraries
 
 ```
 > library("dplyr")
 ```
 
-Print first few rows:
+### Print first few rows
 
 ```
 > head(mtcars)
@@ -22,14 +20,14 @@ Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
 
-See dimension of dataset:
+### See dimension of dataset
 
 ```
 > dim(mtcars)
 [1] 32 11
 ```
 
-See basic characteristics (including dimension):
+### See basic characteristics (including dimension)
 
 ```
 > str(mtcars)
@@ -46,7 +44,7 @@ See basic characteristics (including dimension):
  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 ```
-See basic statistics of a variable:
+### See basic statistics of a variable
 
 ```
 > summary(mtcars$mpg)
@@ -54,7 +52,7 @@ See basic statistics of a variable:
   10.40   15.42   19.20   20.09   22.80   33.90 
 ```
 
-Select columns:
+### Select columns
 
 ```
 > subset <- select(mtcars, cyl:drat)
@@ -78,7 +76,7 @@ Hornet Sportabout  360 175
 Valiant            225 105
 ```
 
-Select rows:
+### Select rows
 
 ```
 > subset <- filter(mtcars, hp > 100 & mpg > 20)
@@ -96,7 +94,8 @@ Select rows:
  $ gear: num  4 4 3 5 4
  $ carb: num  4 4 1 2 2
 ```
-Reorder rows by condition:
+
+### Reorder rows by condition
 
 ```
 > mtcars.order <- arrange(mtcars, desc(mpg))
@@ -112,7 +111,7 @@ Reorder rows by condition:
 [1] 10.4
 ```
 
-Rename column names:
+### Rename columns
 
 ```
 > mtcars.rename <- rename(mtcars, HP = hp, WT = wt)
@@ -126,7 +125,7 @@ Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
 
-Transform selected variables in a data frame:
+### Transform selected variables in a data frame
 ```
 > mtcars.mutate <- mutate(mtcars, qsec = qsec - mean(qsec) / sd(qsec))
 > head(mtcars.mutate)
@@ -139,27 +138,28 @@ Transform selected variables in a data frame:
 6 18.1   6  225 105 2.76 3.460 10.231574  1  0    3    1
 ```
 
-# Header 1
-## Header 2
-### Header 3
+### Group data
 
-- Bulleted
-- List
+```
+> by_cyl <- group_by(mtcars, cyl)
+> summarise(by_cyl, mean(disp), mean(hp))
+# A tibble: 3 x 3
+    cyl mean(disp)  mean(hp)
+  <dbl>      <dbl>     <dbl>
+1     4   105.1364  82.63636
+2     6   183.3143 122.28571
+3     8   353.1000 209.21429
+```
+### Pipe operator %>%
+Pipe operators are used to perform composition of functions. For example, x %>% g %>% f is equivalent to f(g(x)). Equivalent to the previous example, we can do:
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/xinyix/Data-Science-Summary/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+> by_cyl <- group_by(mtcars, cyl) %>% summarize(mean(disp), mean(hp))
+> by_cyl
+# A tibble: 3 x 3
+    cyl mean(disp)  mean(hp)
+  <dbl>      <dbl>     <dbl>
+1     4   105.1364  82.63636
+2     6   183.3143 122.28571
+3     8   353.1000 209.21429
+```
