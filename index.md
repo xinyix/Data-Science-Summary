@@ -1,5 +1,7 @@
 ## Manage Data Frames
-Data frames in R are used to store data tables. A data frame is a list of vectors of the same length, each vector can have a different type, i.e. integer, factor, character, etc. We use R package 'dplyr' and built-in dataset 'mtcars' to illustrate how to read, manipulate and store data frames.
+Data frames in R are used to store data tables. A data frame is a list of vectors of the same length, each vector can have a different type, i.e. integer, factor, character, etc. 
+
+We use R package 'dplyr' and built-in dataset 'mtcars' to illustrate how to read, manipulate and store data frames. In practice, one can perform all the operations below using built-in functions in R. The reason for chosing 'dplyr' is discussed at the end of this page.
 
 ### Import libraries
 
@@ -163,3 +165,5 @@ Pipe operators are used to perform composition of functions. For example, x %>% 
 2     6   183.3143 122.28571
 3     8   353.1000 209.21429
 ```
+
+## Why dplyr?
