@@ -152,6 +152,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 2     6   183.3143 122.28571
 3     8   353.1000 209.21429
 ```
+
 ### Pipe operator '%\>%'
 
 Pipe operators are used to perform composition of functions. For example, x %>% g %>% f is equivalent to f(g(x)). Equivalent to the previous example, we can do:
