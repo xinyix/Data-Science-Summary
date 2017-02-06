@@ -179,7 +179,7 @@ mtcars[1, ]
 to select the all the predictors:
 
 ```
-mtcars[, 2:]
+mtcars[, 2:ncol(mtcars)]
 ```
 
 What are the benefits of dplyr then? First, the function names in dplyr are close to everyday usage, such as select(), filter(), these are verbs that people can easily understand and communicate. Secondly, the dplyr functions are generally faster because some of the heavy operations are written in C++. 
